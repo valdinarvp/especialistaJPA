@@ -9,12 +9,14 @@ import javax.persistence.Persistence;
 public class IniciarUnidadeDePersistencia {
 
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = Persistence
-                .createEntityManagerFactory("Ecommerce-PU");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         Produto produto = entityManager.find(Produto.class, 1);
-        System.out.println(produto.getNome());
+        
+        System.out.println("----------------------------------------");
+        System.out.println("Nome do Produto:  " + produto.getNome());
+        System.out.println("----------------------------------------");
 
         entityManager.close();
         entityManagerFactory.close();

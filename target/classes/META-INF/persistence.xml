@@ -11,13 +11,15 @@
             <property name="javax.persistence.jdbc.password" value="261298@Vp" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
+			<!--Só usado em fase de Estudos, nunca em produção  -->
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.sql-load-script-source" value="META-INF/banco-de-dados/dados-iniciais.sql"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
-
+            
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
+            
         </properties>
     </persistence-unit>
 </persistence>
