@@ -21,9 +21,7 @@ public class PrimeiroCrudTest extends EntityManagerTest{
 		entityManager.getTransaction().commit();
 		
 		Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-		Assert.assertNotNull(clienteVerificacao);
-		
-		
+		Assert.assertNotNull(clienteVerificacao);		
 	}
 	
 	@Test
@@ -86,5 +84,4 @@ public class PrimeiroCrudTest extends EntityManagerTest{
 		Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
 		Assert.assertNotNull(clienteVerificacao);		
 	}
-
 }
