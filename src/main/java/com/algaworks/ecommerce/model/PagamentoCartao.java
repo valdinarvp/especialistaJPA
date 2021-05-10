@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -13,8 +14,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="cliente")
-public class Cliente implements Serializable{
+@Table(name="pagamento_cartao")
+public class PagamentoCartao implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,8 +23,11 @@ public class Cliente implements Serializable{
 	@Id
 	private Integer id;
 	
-	private String nome;
+	@Column(name = "pedido_id")
+	private Integer pedidoId;
 	
-	private SexoCliente sexo;
+	private StatusPagamento status;
+	
+	private String numero;
 	
 }
