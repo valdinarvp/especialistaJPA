@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
-import com.algaworks.ecommerce.model.SexoCliente;
 
 public class MapeamentoEnumeracoesTest extends EntityManagerTest{
 	
@@ -15,8 +14,8 @@ public class MapeamentoEnumeracoesTest extends EntityManagerTest{
 		
 		cliente.setId(4);
 		cliente.setNome("Valdinar Pereira");
-		cliente.setSexo(SexoCliente.MASCULINO);
-		
+		//cliente.setSexo(SexoCliente.MASCULINO);
+		cliente.setSexo("Masculino");	
 		entityManager.getTransaction().begin();
 		entityManager.persist(cliente);
 		entityManager.getTransaction().commit();
