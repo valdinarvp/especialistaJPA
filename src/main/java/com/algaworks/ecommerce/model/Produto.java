@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -40,4 +41,7 @@ public class Produto implements Serializable{
 	@JoinTable(name = "produto_categoria", joinColumns = @JoinColumn(name = "produto_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias;
+	
+	@OneToOne(mappedBy="produto")
+	private Estoque estoque;
 }
