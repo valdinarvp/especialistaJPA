@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -48,13 +49,16 @@ public class Pedido implements Serializable {
 	@Column(name="data_conclusao")
 	private LocalDateTime dataConclusao;
 	
-	@Column(name = "nota_fiscal_id")
-	private Integer notaFiscalId;
+	@OneToOne(mappedBy = "pedido")
+	private NotaFiscal notaFiscal;
 	
 	private BigDecimal total;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
+	
+	@OneToOne(mappedBy = "pedido")
+	private PagamentoCartao pagamentoCartao;
 	
 	@Embedded
 	private EnderecoEntregaPedido enderecoEntrega;	
