@@ -5,10 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,11 +25,15 @@ public class NotaFiscal implements Serializable {
 
 	@EqualsAndHashCode.Include
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	//Trabalhando com chave composta, primária e estrangeira
+	@Column(name="pedido_id")
 	private Integer id;
 	
+	@MapsId
 	@OneToOne
 	@JoinColumn(name="pedido_id")
+	//@JoinColumn(name="pedido_id", insertable = false, updatable = false)
 	private Pedido pedido;
 	
 	private String xml;

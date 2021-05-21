@@ -6,15 +6,14 @@ import org.junit.Test;
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
-import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.StatusPedido;
 
 public class ListenersTest extends EntityManagerTest {
 
     @Test
     public void carregarEntidades() {
-        Produto produto = entityManager.find(Produto.class, 1);
-        Pedido pedido = entityManager.find(Pedido.class, 1);
+        //Produto produto = entityManager.find(Produto.class, 1);
+       // Pedido pedido = entityManager.find(Pedido.class, 1);
     }
 
     @Test

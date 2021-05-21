@@ -17,8 +17,7 @@ public class EntityManagerTest {
 
     @BeforeClass
     public static void setUpBeforeClass() {
-        entityManagerFactory = Persistence
-                .createEntityManagerFactory("Ecommerce-PU");
+        entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
     }
 
     @AfterClass
