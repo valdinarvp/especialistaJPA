@@ -1,40 +1,42 @@
 package com.algaworks.ecommerce.model;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name="cliente")
-public class Cliente implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
-	@EqualsAndHashCode.Include
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String nome;
-	
-	/*@Enumerated(EnumType.STRING)
-	private SexoCliente sexo;*/
-	
-	private String sexo;
-	
-	@OneToMany(mappedBy="cliente")
-	private List<Pedido> pedidos;
-		
+@Table(name = "cliente")
+public class Cliente {
+
+    @EqualsAndHashCode.Include
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String nome;
+
+    @Transient
+    private String primeiroNome;
+
+    @Enumerated(EnumType.STRING)
+    private SexoCliente sexo;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+
+    @PostLoad
+    public void configurarPrimeiroNome(){
+        if (nome != null && !nome.isBlank()) {
+            int index = nome.indexOf(" ");
+            if (index > -1) {
+                primeiroNome = nome.substring(0, index);
+            }
+        }
+    }
 }
