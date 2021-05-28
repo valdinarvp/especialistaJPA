@@ -37,25 +37,22 @@ public class RelacionamentoOneToOneTest extends EntityManagerTest{
 	}
 	
 	@Test
-	public void verificarRelacionamentoPedidoNotaFiscal() {
-		
-		Pedido pedido = entityManager.find(Pedido.class, 1);
-		
-		NotaFiscal notaFiscal = new NotaFiscal();
-		notaFiscal.setXml("TESTE");
-		notaFiscal.setDataEmissao(new Date());
-		notaFiscal.setPedido(pedido);
-		
-		entityManager.getTransaction().begin();
-		entityManager.persist(notaFiscal);
-		entityManager.getTransaction().commit();
-		
-		entityManager.clear();
-		
-		Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-		
-		Assert.assertNotNull(pedidoVerificacao.getNotaFiscal());
-		
-	}
+    public void verificarRelacionamentoPedidoNotaFiscal() {
+        Pedido pedido = entityManager.find(Pedido.class, 1);
+
+        NotaFiscal notaFiscal = new NotaFiscal();
+        notaFiscal.setXml("TESTE".getBytes());
+        notaFiscal.setDataEmissao(new Date());
+        notaFiscal.setPedido(pedido);
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(notaFiscal);
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
+        Assert.assertNotNull(pedidoVerificacao.getNotaFiscal());
+    }
 
 }

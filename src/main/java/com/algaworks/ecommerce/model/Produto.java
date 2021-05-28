@@ -35,6 +35,9 @@ public class Produto {
 
     private BigDecimal preco;
 
+    @Lob
+    private byte[] foto;
+
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
@@ -50,8 +53,8 @@ public class Produto {
     @Column(name = "tag")
     private List<String> tags;
 
-
     @ElementCollection
-    @CollectionTable(name = "produto_atributo", joinColumns = @JoinColumn(name = "produto_id"))
+    @CollectionTable(name = "produto_atributo",
+            joinColumns = @JoinColumn(name = "produto_id"))
     private List<Atributo> atributos;
 }
