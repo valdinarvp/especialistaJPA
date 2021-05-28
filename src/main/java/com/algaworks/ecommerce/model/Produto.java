@@ -1,13 +1,11 @@
 package com.algaworks.ecommerce.model;
 
+import com.algaworks.ecommerce.listener.GenericoListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-
-import com.algaworks.ecommerce.listener.GenericoListener;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,15 +43,15 @@ public class Produto {
 
     @OneToOne(mappedBy = "produto")
     private Estoque estoque;
-    
+
     @ElementCollection
-    @CollectionTable(name="produto_tag", joinColumns = @JoinColumn(name="produto_id"))
-    @Column(name="tag")
+    @CollectionTable(name = "produto_tag",
+            joinColumns = @JoinColumn(name = "produto_id"))
+    @Column(name = "tag")
     private List<String> tags;
-    
-    
-    
-    
-    
-    
+
+
+    @ElementCollection
+    @CollectionTable(name = "produto_atributo", joinColumns = @JoinColumn(name = "produto_id"))
+    private List<Atributo> atributos;
 }
