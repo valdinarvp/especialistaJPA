@@ -21,15 +21,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "categoria")
-public class Categoria implements Serializable {
+public class Categoria extends EntitydadeBaseInteger  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@EqualsAndHashCode.Include
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
 	private String nome;
 	
 	@ManyToOne
