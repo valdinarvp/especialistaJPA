@@ -1,6 +1,5 @@
 package com.algaworks.ecommerce.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,21 +19,20 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "categoria",
-uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) })
-public class Categoria extends EntidadeBaseInteger  implements Serializable{
+        uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) })
+public class Categoria extends EntidadeBaseInteger {
 
-	private static final long serialVersionUID = 1L;
+    @Column(length = 100, nullable = false)
+    private String nome;
 
-	@Column(length = 100, nullable = false)
-	private String nome;
-	
-	@ManyToOne
-	@JoinColumn(name="categoria_pai_id", foreignKey = @ForeignKey(name = "fk_categoria_categoria_pai"))
-	private Categoria categoriaPai;
-	
-	@OneToMany(mappedBy="categoriaPai")
-	private List<Categoria> categorias;
-	
-	@ManyToMany(mappedBy = "categorias")
-	private List<Produto> produtos;
+    @ManyToOne
+    @JoinColumn(name = "categoria_pai_id",
+            foreignKey = @ForeignKey(name = "fk_categoria_categoriapai"))
+    private Categoria categoriaPai;
+
+    @OneToMany(mappedBy = "categoriaPai")
+    private List<Categoria> categorias;
+
+    @ManyToMany(mappedBy = "categorias")
+    private List<Produto> produtos;
 }
