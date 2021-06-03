@@ -3,6 +3,7 @@ package com.algaworks.ecommerce.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,8 +29,9 @@ public class Estoque implements Serializable {
 	private Integer id;
 	
 	@OneToOne(optional = false)
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "produto_id", foreignKey = @ForeignKey(name = "fk_estoque_produto"))
     private Produto produto;
+	
 	private Integer quantidade;
 
 }

@@ -1,13 +1,10 @@
 package com.algaworks.ecommerce.mapeamentoavancado;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
-import com.algaworks.ecommerce.model.Pagamento;
 import com.algaworks.ecommerce.model.PagamentoCartao;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.StatusPagamento;
@@ -29,13 +26,13 @@ public class HerancaTest extends EntityManagerTest {
         Assert.assertNotNull(clienteVerificacao.getId());
     }
     
-    @Test
+   /* @Test
     public void buscarPagamentos() {
         List<Pagamento> pagamentos = entityManager.createQuery("select p from Pagamento p")
                 .getResultList();
 
         Assert.assertFalse(pagamentos.isEmpty());
-    }
+    }*/
 
     @Test
     public void incluirPagamentoPedido() {

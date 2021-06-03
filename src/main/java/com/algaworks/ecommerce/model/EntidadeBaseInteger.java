@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @MappedSuperclass
-public class EntitydadeBaseInteger {
+public class EntidadeBaseInteger {
 	
 	@EqualsAndHashCode.Include
     @Id

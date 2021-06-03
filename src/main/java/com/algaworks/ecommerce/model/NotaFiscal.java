@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -32,15 +33,16 @@ public class NotaFiscal implements Serializable {
 	private Integer id;
 	
 	@MapsId
-	@OneToOne
-	@JoinColumn(name="pedido_id")
+	@OneToOne(optional = false)
+	@JoinColumn(name="pedido_id",nullable = false, foreignKey = @ForeignKey(name = "fk_nota_fiscal_pedido"))
 	//@JoinColumn(name="pedido_id", insertable = false, updatable = false)
 	private Pedido pedido;
 	
 	@Lob
+	@Column(nullable = false)
 	private byte[] xml;
 	
-	@Column(name="data_emissao")
+	@Column(name="data_emissao", nullable = false)
 	private Date dataEmissao;
 
 }
