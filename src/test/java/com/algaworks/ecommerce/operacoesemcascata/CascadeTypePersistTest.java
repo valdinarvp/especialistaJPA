@@ -1,18 +1,24 @@
 package com.algaworks.ecommerce.operacoesemcascata;
 
-import com.algaworks.ecommerce.EntityManagerTest;
-import com.algaworks.ecommerce.model.*;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
+import org.junit.Assert;
+
+import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.ItemPedido;
+import com.algaworks.ecommerce.model.ItemPedidoId;
+import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Produto;
+import com.algaworks.ecommerce.model.SexoCliente;
+import com.algaworks.ecommerce.model.StatusPedido;
+
 public class CascadeTypePersistTest extends EntityManagerTest {
 
-    @Test
+   // @Test
     public void persistirPedidoComItens() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
@@ -45,7 +51,7 @@ public class CascadeTypePersistTest extends EntityManagerTest {
 
     }
 
-    @Test
+   // @Test
     public void persistirItemPedidoComPedido() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
