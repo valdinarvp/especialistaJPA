@@ -12,6 +12,18 @@ import com.algaworks.ecommerce.EntityManagerTest;
 public class JoinTest extends EntityManagerTest {
 	
 	@Test
+    public void fazeLeftrJoin() {
+		
+		String jpql = "select p from Pedido p left join p.pagamento pag on pag.status = 'AGUARDANDO'";
+        
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
+
+        List<Object[]> lista = typedQuery.getResultList();
+        Assert.assertTrue(lista.size()== 2);
+       
+	}
+	
+	@Test
     public void fazerJoin() {
 		
         String jpql = "select p from Pedido p join p.pagamento pag";
@@ -21,7 +33,7 @@ public class JoinTest extends EntityManagerTest {
         List<Object[]> lista = typedQuery.getResultList();
         
         Assert.assertTrue(lista.size() == 1);
+        
 	}
 	
-
 }
